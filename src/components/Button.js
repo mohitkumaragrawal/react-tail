@@ -1,4 +1,7 @@
 const Button = (props) => {
+  const buttonProps = { ...props };
+  delete buttonProps.className;
+
   return (
     <button
       className={`
@@ -14,7 +17,12 @@ const Button = (props) => {
         hover:-translate-y-0.5
         active:translate-y-0
         transition-all
+
+        disabled:bg-slate-700
+        disabled:hover:translate-y-0
+        disabled:opacity-60
         ${props.className}`}
+      {...buttonProps}
     >
       {props.children}
     </button>
