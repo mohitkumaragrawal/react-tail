@@ -1,4 +1,4 @@
-import { minWidth, maxWidth, combineValidators } from "./coreValidator";
+import { minLength, maxLength, combineValidators } from "./coreValidator";
 
 /**
  * @param {string} value
@@ -31,9 +31,9 @@ export const requireUpperAlpha = (value) => {
 };
 
 export const passwordValidator = combineValidators([
-  minWidth(8),
+  minLength(8),
   requireDigit,
   requireLowerAlpha,
   requireUpperAlpha,
-  maxWidth(50),
+  maxLength(50),
 ]);

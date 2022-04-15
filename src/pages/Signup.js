@@ -8,7 +8,7 @@ import { useId } from "react";
 import useValidator from "../hooks/useValidator";
 import {
   emailValidator,
-  minWidth,
+  minLength,
   passwordValidator,
   required,
 } from "../validators";
@@ -21,7 +21,7 @@ const Signup = () => {
   const [firstNameControl] = useValidator(required);
   const [lastNameControl] = useValidator(required);
   const [emailControl] = useValidator(emailValidator);
-  const [usernameControl] = useValidator(minWidth(5));
+  const [usernameControl] = useValidator(minLength(5));
   const [passwordControl] = useValidator(passwordValidator);
 
   const form = createForm({

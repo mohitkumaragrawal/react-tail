@@ -3,12 +3,12 @@
  * @param {number} width the minimum width the input should have
  * @returns {(value: string) => (null | {minWidth?: string})}
  */
-export const minWidth = (width) => {
+export const minLength = (length) => {
   return (value) => {
-    if (value && value.length && value.length >= width) {
+    if (value && value.length && value.length >= length) {
       return null; // valid;
     }
-    return { minWidth: `atleast ${width} characters are requried` };
+    return { minLength: `atleast ${length} characters are requried` };
   };
 };
 
@@ -17,12 +17,12 @@ export const minWidth = (width) => {
  * @param {number} width the maximum width the input should have
  * @returns {(value: string) => (null | {maxWidth?: string})}
  */
-export const maxWidth = (width) => {
+export const maxLength = (length) => {
   return (value) => {
-    if (value !== null && value.length <= width) {
+    if (value !== null && value.length <= length) {
       return null;
     }
-    return { maxWidth: `atmost ${width} characters are allowed` };
+    return { maxLength: `atmost ${length} characters are allowed` };
   };
 };
 

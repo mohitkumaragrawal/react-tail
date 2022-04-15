@@ -59,6 +59,7 @@ const useValidator = (validator) => {
           dispatch({ type: control_touched });
         },
         invalid: !inputControlState.valid && inputControlState.touched,
+        value: inputControlState.value,
       },
     },
     dispatch,
