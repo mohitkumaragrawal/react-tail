@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Transition from "react-transition-group/Transition";
+import { CSSTransition } from "react-transition-group";
 
 const InputControl = (props) => {
   const inputProps = { ...props };
@@ -33,39 +33,25 @@ const InputControl = (props) => {
         {props.name}
       </label>
 
-      <Transition
+      <CSSTransition
         in={props.invalid && props.children !== undefined}
         mountOnEnter
         unmountOnExit
         timeout={{ exit: 200 }}
+        classNames={{
+          enter: "opacity-0 -translate-y-0",
+          enterActive: "opacity-100",
+          exitActive: "opacity-0 -translate-y-0",
+        }}
         nodeRef={transitionRef}
       >
-        {(state) => {
-          let extraclass;
-          switch (state) {
-            case "entering":
-            case "exiting":
-            case "exited":
-              extraclass = "opacity-0 -translate-y-0";
-              break;
-
-            case "entered":
-              extraclass = "opacity-100";
-              break;
-
-            default:
-              extraclass = "";
-          }
-          return (
-            <div
-              className={`order-3 transition-all ease-in duration-200 absolute -bottom-2 translate-y-1/2 ${extraclass}`}
-              ref={transitionRef}
-            >
-              {props.children}
-            </div>
-          );
-        }}
-      </Transition>
+        <div
+          className="order-3 transition-all ease-in duration-200 absolute -bottom-2 translate-y-1/2"
+          ref={transitionRef}
+        >
+          {props.children}
+        </div>
+      </CSSTransition>
     </div>
   );
 };
